@@ -20,7 +20,7 @@ namespace dotnet6_api.Controllers
             _characterService = characterService;
         }
 
-        [HttpGet("")]
+        [HttpGet]
         public async Task<ActionResult<ServiceResponse<List<GetCharacterDto>>>> Get(){
             return Ok(await _characterService.GetAllCharacters());
         }
@@ -30,9 +30,14 @@ namespace dotnet6_api.Controllers
             return Ok(await _characterService.GetCharacterById(id));
         }
 
-        [HttpPost("")]
+        [HttpPost]
         public async Task<ActionResult<ServiceResponse<List<GetCharacterDto>>>> AddCharacter(AddCharacterDto newCharacter){
             return Ok(await _characterService.AddCharacter(newCharacter));
+        }
+
+        [HttpPut]
+        public async Task<ActionResult<ServiceResponse<GetCharacterDto>>> UpdateCharacter(UpdateCharacterDto updatedCharacter){
+            return Ok(await _characterService.UpdateCharacter(updatedCharacter));
         }
     }
 }
