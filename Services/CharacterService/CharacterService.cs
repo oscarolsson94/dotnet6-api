@@ -58,7 +58,14 @@ namespace dotnet6_api.Services.CharacterService
 
             Character character = characters.FirstOrDefault(character => character.Id == updatedCharacter.Id);
 
-            character.Name = 
+            character.Name = updatedCharacter.Name;
+            character.HitPoints = updatedCharacter.HitPoints;
+            character.Strength = updatedCharacter.Strength;
+            character.Defense = updatedCharacter.Defense;
+            character.Intelligence = updatedCharacter.Intelligence;
+            character.Class = updatedCharacter.Class;
+
+            return response;
         }
     }
 }
