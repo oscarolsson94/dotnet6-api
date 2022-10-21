@@ -9,7 +9,7 @@ namespace dotnet6_api.Services.CharacterService
     {
         List<Character> GetAllCharacters();
 
-        Character GetCharacterById();
+        Character GetCharacterById(int id);
 
         List<Character> AddCharacter(Character newCharacter);
     }
