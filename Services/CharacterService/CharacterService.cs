@@ -36,6 +36,26 @@ namespace dotnet6_api.Services.CharacterService
             return serviceResponse;
         }
 
+        public async Task<ServiceResponse<List<GetCharacterDto>>> DeleteCharacter(int id)
+        {
+            ServiceResponse<List<GetCharacterDto>> response = new ServiceResponse<List<GetCharacterDto>>();
+
+            try{
+                Character character = characters.First(character => character.Id == id);
+                
+                characters.Remove(character);
+
+                characters.Select(character => _mapper.Map<GetCharacterDto>(character)).ToList();
+            }
+            catch(Exception ex){
+                response.Success = false;
+                response.Message = ex.Message;
+            }
+
+
+            return response;
+        }
+
         public async Task<ServiceResponse<List<GetCharacterDto>>> GetAllCharacters()
         {
             return new ServiceResponse<List<GetCharacterDto>> { Data = characters.Select(character => _mapper.Map<GetCharacterDto>(character)).ToList() };
