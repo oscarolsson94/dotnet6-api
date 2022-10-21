@@ -51,5 +51,14 @@ namespace dotnet6_api.Services.CharacterService
 
             return serviceResponse;
         }
+
+        public async Task<ServiceResponse<GetCharacterDto>> UpdateCharacter(UpdateCharacterDto updatedCharacter)
+        {
+            ServiceResponse<GetCharacterDto> response = new ServiceResponse<GetCharacterDto>();
+
+            Character character = characters.FirstOrDefault(character => character.Id == updatedCharacter.Id);
+
+            character.Name = 
+        }
     }
 }
