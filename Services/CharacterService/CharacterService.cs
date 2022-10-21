@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using dotnet6_api.Dtos.Character;
 
 namespace dotnet6_api.Services.CharacterService
@@ -13,6 +14,12 @@ namespace dotnet6_api.Services.CharacterService
             new Character(),
             new Character { Id = 1, Name = "Sam"}
         };
+        private readonly IMapper _mapper;
+
+        public CharacterService(IMapper mapper)
+        {
+            _mapper = mapper;
+        }
 
         public async Task<ServiceResponse<List<GetCharacterDto>>> AddCharacter(AddCharacterDto newCharacter)
         {
